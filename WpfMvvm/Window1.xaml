@@ -1,0 +1,45 @@
+﻿<Window x:Class="WpfMvvm.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMvvm"
+        mc:Ignorable="d" DataContext="{StaticResource windowViewModel}"
+        Title="Window1" Height="450" Width="800">
+    
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox Margin="5" Text="{Binding Num1}"/>
+        <TextBox Margin="5" Text="{Binding Text1}" Grid.Column="1" />
+        <TextBox Margin="5" Grid.Column="2" />
+        <CheckBox IsChecked="{Binding Check1}" Grid.Row="1" Margin="5" Content="T1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <RadioButton Content="1" Margin="5"/>
+            <RadioButton Content="2" Margin="5"/>
+        </StackPanel>
+        <Button Grid.Row="3" Margin="5" Content="저장" Command="{Binding SaveCommand}"/>
+        <ListView SelectedItem="{Binding SelectedItem}" Margin="5" Grid.Row="4" Grid.ColumnSpan="4" ItemsSource="{Binding Items}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="StringData" Width="150" DisplayMemberBinding="{Binding Int1}"/>
+                    <GridViewColumn Header="IntData" Width="150" DisplayMemberBinding="{Binding Bool1}"/>
+                    <GridViewColumn Header="TimeData" Width="200" DisplayMemberBinding="{Binding Str1}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
